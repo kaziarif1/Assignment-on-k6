@@ -70,6 +70,16 @@ The report is [`reports/performance-report.html`](reports/performance-report.htm
 
 The metrics snapshot is generated from the actual k6 summary with `npm run metrics-image`. The HTML report is available directly in `reports/` and can be opened in a browser.
 
+### HTML report screenshots
+
+Screenshots from the generated performance report:
+
+![HTML report overview](screenshots/report-overview.png)
+
+![API and phase comparison](screenshots/report-api-phases.png)
+
+![Threshold results](screenshots/report-thresholds.png)
+
 ### k6 metrics snapshot
 
 ![k6 metrics snapshot generated from the actual summary](screenshots/k6-metrics.png)
@@ -78,7 +88,7 @@ The metrics snapshot is generated from the actual k6 summary with `npm run metri
 
 The latest recorded run used the local API at `http://127.0.0.1:5000`, with six independently authenticated test accounts. All four 30-second phases completed. It produced 26 successful transaction requests (6 deposits, 6 send-money, and 14 payments) plus 12 setup/login HTTP requests. All 104 checks passed. Overall HTTP p95 was 232.69 ms (target <1,000 ms), HTTP request failures were 0% (target <1%), and checks passed at 100% (target ≥99%). The per-API p95s were deposit 192.92 ms, send-money 155.10 ms, and payment 235.04 ms; all API failure rates were 0% and all transaction checks passed. The k6 run exited successfully with all configured thresholds passing. Values are recorded in [`reports/k6-summary.json`](reports/k6-summary.json) and [`reports/performance-report.html`](reports/performance-report.html). The local database query index migration was applied before this run; see [support/add_transactions_query_indexes.sql](support/add_transactions_query_indexes.sql). The test uses real balance-changing transactions; these local accounts have now been used, so create/reset dedicated test accounts before another baseline run.
 
-The report screenshot from the earlier failing run was removed from the current-results section to avoid presenting stale metrics as current. Capture a fresh screenshot of `reports/performance-report.html` in your browser and save it as `screenshots/report.png` before submission if a separate HTML screenshot is required by your instructor. The embedded metrics image above is generated from the current raw summary, not a browser screenshot.
+The embedded report screenshots show the overview, API and phase comparison, and threshold results from the generated HTML report. The metrics image below is generated directly from the raw k6 summary.
 
 ## Troubleshooting and limitations
 
