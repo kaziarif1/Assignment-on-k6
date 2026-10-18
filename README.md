@@ -2,6 +2,8 @@
 
 Road to SDET, Batch 19 performance assignment. This project runs six independently authenticated dMoney users through the required local deposit, send-money, and payment flows for four consecutive 30-second phases.
 
+**Author:** Kazi Abu Jafor Arif · **Email:** [kajarif02@gmail.com](mailto:kajarif02@gmail.com)
+
 ## Objectives and tools
 
 - Exercise the local Node.js/Express dMoney API with k6 and JavaScript.
