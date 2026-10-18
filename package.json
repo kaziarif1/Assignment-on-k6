@@ -1,0 +1,11 @@
+{
+  "name": "dmoney-k6-performance",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Flow-based local dMoney transaction performance assignment using k6",
+  "scripts": {
+    "run": "node scripts/run-k6.js",
+    "report": "node scripts/generate-report.js",
+    "metrics-image": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/generate-metrics-image.ps1"
+  }
+}

@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>k6 metrics output</title><style>body{margin:0;background:#101820;color:#dce8ef;font:15px/1.5 ui-monospace,Consolas,monospace}header{padding:1.2rem 2rem;background:#172631;color:#8ce3bb}h1{font-size:1.2rem;margin:0}p{color:#a9bac5}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:1rem 2rem;margin:0;font-size:14px}.pass{color:#8ce3bb}.fail{color:#ff8585}</style></head><body><header><h1>k6 metrics output · dMoney transaction workload</h1><p>Derived directly from reports/k6-summary.json. No values are fabricated.</p></header><pre>{
+  "runDurationSeconds": 120.67,
+  "transactionApiRequests": 9847,
+  "allHttpRequestsIncludingSetupLogin": 9859,
+  "httpRequestFailureRate": 0.8097170098387261,
+  "overallCheckPassRate": 0.09576520767746521,
+  "overallHttpDurationMs": {
+    "avg": 38.34108816309987,
+    "min": 3.8981,
+    "med": 29.8365,
+    "max": 449.3746,
+    "p(90)": 85.25874,
+    "p(95)": 96.03229000000003
+  },
+  "apis": {
+    "deposit": {
+      "requests": 1243,
+      "failures": 926,
+      "failureRate": 0.7449718423169751,
+      "transactionCheckPassRate": 0.25502815768302495,
+      "durationMs": {
+        "max": 449.3746,
+        "p(90)": 97.73379999999999,
+        "p(95)": 109.38819,
+        "avg": 71.17099541432015,
+        "min": 28.9839,
+        "med": 70.6149
+      }
+    },
+    "sendmoney": {
+      "requests": 3196,
+      "failures": 3186,
+      "failureRate": 0.9968710888610763,
+      "transactionCheckPassRate": 0.0031289111389236545,
+      "durationMs": {
+        "max": 368.4191,
+        "p(90)": 35.22225,
+        "p(95)": 38.630225,
+        "avg": 26.810576220275347,
+        "min": 3.8981,
+        "med": 26.1022
+      }
+    },
+    "payment": {
+      "requests": 5408,
+      "failures": 4792,
+      "failureRate": 0.886094674556213,
+      "transactionCheckPassRate": 0.11390532544378698,
+      "durationMs": {
+        "med": 30.84035,
+        "max": 353.0626,
+        "p(90)": 87.37438000000002,
+        "p(95)": 98.366825,
+        "avg": 37.594955787721915,
+        "min": 6.1969
+      }
+    }
+  },
+  "thresholds": {
+    "payment_duration: p(95)&lt;1000": "PASS",
+    "deposit_transaction_checks: rate&gt;=0.99": "FAIL",
+    "checks: rate&gt;=0.99": "FAIL",
+    "http_req_duration: p(95)&lt;1000": "PASS",
+    "http_req_failed: rate&lt;0.01": "FAIL",
+    "sendmoney_transaction_checks: rate&gt;=0.99": "FAIL",
+    "deposit_duration: p(95)&lt;1000": "PASS",
+    "sendmoney_duration: p(95)&lt;1000": "PASS",
+    "deposit_failures: rate&lt;0.01": "FAIL",
+    "payment_transaction_checks: rate&gt;=0.99": "FAIL",
+    "payment_failures: rate&lt;0.01": "FAIL",
+    "sendmoney_failures: rate&lt;0.01": "FAIL"
+  }
+}</pre></body></html>
