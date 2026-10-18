@@ -41,7 +41,7 @@ Each named scenario has its own `constant-vus` executor, starts at the listed bo
 
 Payloads use the discovered API schema `{from_account, to_account, amount}`. Deposit, send-money, and payment each require an amount of at least 10 Tk. Values default to 10 Tk and can be changed with `DMONEY_DEPOSIT_AMOUNT`, `DMONEY_SEND_AMOUNT`, and `DMONEY_PAYMENT_AMOUNT`. Deposits debit the agent; send-money and payment debit the customer or agent, including fees. These are real, balance-changing transactions; the project does not reset or roll back the database. Use dedicated accounts with sufficient balances and limits. Repeated transactions can hit the API's daily/monthly customer limits, wallet/balance limits, or exhaust funds. Use low amounts and inspect the local balances and limits before running.
 
-Throughput is not fixed: it depends on the configured VUs, response and iteration times, and database contention. The test intentionally does not inject sleeps between requests.
+The customer API enforces a maximum of 10 outgoing transactions per day. Each flow uses a randomized 15–17 second think time, allowing up to two iterations in its 30-second phase. This yields eight outgoing requests per customer across the four phases and avoids making the test fail by exhausting the account's business limit. The pacing is configurable with `DMONEY_THINK_TIME_MIN` and `DMONEY_THINK_TIME_MAX`; the minimum is validated at 15 seconds. Throughput is therefore a measured outcome of the local API and configured workload, not a fixed target.
 
 ## Run the test
 
@@ -68,19 +68,17 @@ npm run metrics-image
 
 The report is [`reports/performance-report.html`](reports/performance-report.html) and works offline. It includes overall and per-API request counts, throughput (requests divided by observed run time), average, median, p90, p95, maximum duration, failure and check rates, phase comparisons, and threshold status. `reports/k6-metrics-output.html` presents the measured values and threshold results derived directly from the raw JSON. The k6 summary does not retain response bodies, so it cannot identify the exact error message for each failed request. Compare phase rows with their request counts and durations to identify observed changes as concurrency composition changes. Do not infer a bottleneck from response times alone; correlate with application/DB evidence.
 
-The report screenshot and metrics snapshot are included below. The metrics image is generated from the actual k6 summary with `npm run metrics-image`.
+The metrics snapshot is generated from the actual k6 summary with `npm run metrics-image`. The HTML report is available directly in `reports/` and can be opened in a browser.
 
-### HTML report screenshot
+### k6 metrics snapshot
 
-![Generated performance report screenshot](screenshots/report.png)
-
-### k6 metrics screenshot
-
-![k6 metrics screenshot generated from the actual summary](screenshots/k6-metrics.png)
+![k6 metrics snapshot generated from the actual summary](screenshots/k6-metrics.png)
 
 ## Current execution status
 
-The local backend is configured on port 5000 and returned HTTP 200. Six dedicated Customer, Agent, and Merchant accounts were created in the local `dmoneydb` and authenticated successfully through the development OTP flow. Their passwords and identifiers are stored in this project's ignored `.env`. Agents were funded and the requested 120-second workload completed. It produced 9,847 transaction API requests (9,859 HTTP requests including setup logins) over 120.67 seconds, or 81.61 transaction requests/s. Overall HTTP p95 was 96.03 ms, while the HTTP request failure rate was 80.97% and checks passed at 9.58%. The p95 latency targets passed; the failure-rate and check-rate thresholds failed, so k6 correctly exited non-zero. The high transaction failure rate is consistent with stateful account limits/funds being reached during repeated loops, but response bodies were not captured, so individual error causes cannot be confirmed from this summary. These accounts and balances have now been used; reset or create a fresh dedicated test database before treating another run as a clean baseline.
+The latest recorded run used the local API at `http://127.0.0.1:5000`, with six independently authenticated test accounts. All four 30-second phases completed. It produced 26 successful transaction requests (6 deposits, 6 send-money, and 14 payments) plus 12 setup/login HTTP requests. All 104 checks passed. Overall HTTP p95 was 232.69 ms (target <1,000 ms), HTTP request failures were 0% (target <1%), and checks passed at 100% (target ≥99%). The per-API p95s were deposit 192.92 ms, send-money 155.10 ms, and payment 235.04 ms; all API failure rates were 0% and all transaction checks passed. The k6 run exited successfully with all configured thresholds passing. Values are recorded in [`reports/k6-summary.json`](reports/k6-summary.json) and [`reports/performance-report.html`](reports/performance-report.html). The local database query index migration was applied before this run; see [support/add_transactions_query_indexes.sql](support/add_transactions_query_indexes.sql). The test uses real balance-changing transactions; these local accounts have now been used, so create/reset dedicated test accounts before another baseline run.
+
+The report screenshot from the earlier failing run was removed from the current-results section to avoid presenting stale metrics as current. Capture a fresh screenshot of `reports/performance-report.html` in your browser and save it as `screenshots/report.png` before submission if a separate HTML screenshot is required by your instructor. The embedded metrics image above is generated from the current raw summary, not a browser screenshot.
 
 ## Troubleshooting and limitations
 

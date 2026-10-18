@@ -40,6 +40,10 @@ const thresholdRows = Object.entries(metrics).filter(([name]) => name === 'http_
   const expressions = Object.keys(metric.thresholds || {});
   return `<tr><td>${name}</td><td>${expressions.join('; ') || '—'}</td><td class="${pass ? 'pass' : 'fail'}">${pass === null ? 'not configured' : pass ? 'PASS' : 'FAIL'}</td></tr>`;
 }).join('');
+const failureMetrics = Object.entries(metrics).filter(([name]) => name.startsWith('transaction_failure_details'));
+const failureSection = failureMetrics.length
+  ? `<table><thead><tr><th>API / phase / status / reason</th><th>Failures</th></tr></thead><tbody>${failureMetrics.map(([name, metric]) => `<tr><td>${name}</td><td>${metric.values?.count ?? 0}</td></tr>`).join('')}</tbody></table>`
+  : '<p>No transaction failures were recorded.</p>';
 const overall = metrics.http_req_duration?.values || {};
 const overallCount = value('http_reqs', 'count');
 const failedHttpRequests = value('http_req_failed', 'passes');
@@ -53,7 +57,7 @@ body{font:15px/1.5 system-ui,sans-serif;max-width:1200px;margin:2rem auto;paddin
 <h2>API comparison</h2><table><thead><tr><th>API</th><th>Requests</th><th>Req/s</th><th>Average</th><th>Median</th><th>p(90)</th><th>p(95)</th><th>Maximum</th><th>Failed requests</th><th>Failure rate</th><th>Transaction checks passed</th></tr></thead><tbody>${apiRows}</tbody></table>
 <h2>Phase comparison</h2><table><thead><tr><th>API</th><th>Phase</th><th>Requests</th><th>Req/s</th><th>Average</th><th>p(95)</th></tr></thead><tbody>${phaseRows}</tbody></table>
 <h2>Thresholds</h2><table><thead><tr><th>Metric</th><th>Target</th><th>Status</th></tr></thead><tbody>${thresholdRows}</tbody></table>
-<p class="note">This report contains observed values only. Empty/missing measurements are shown as zero or an em dash; no values are synthesized. The API controller enforces customer daily transaction-count and wallet-balance limits; the custom metrics record API failures but the k6 summary does not retain response bodies, so error messages are not available from this report. See raw reports/k6-summary.json for metric counts and threshold results.</p></body></html>`;
+<h2>Failure details</h2>${failureSection}<p class="note">This report contains observed values only. Empty/missing measurements are shown as zero or an em dash; no values are synthesized. The API controller enforces customer daily transaction-count and wallet-balance limits; the k6 summary retains failure categories by API, phase, and status; response bodies are not stored, so exact server messages are unavailable. See raw reports/k6-summary.json for metric counts and threshold results.</p></body></html>`;
 fs.writeFileSync(output, report);
 console.log(`Wrote ${path.relative(root, output)}`);
 
@@ -79,4 +83,6 @@ const escapeHtml = text => text.replace(/[&<>]/g, char => ({ '&': '&amp;', '<': 
 const metricsPage = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>k6 metrics output</title><style>body{margin:0;background:#101820;color:#dce8ef;font:15px/1.5 ui-monospace,Consolas,monospace}header{padding:1.2rem 2rem;background:#172631;color:#8ce3bb}h1{font-size:1.2rem;margin:0}p{color:#a9bac5}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:1rem 2rem;margin:0;font-size:14px}.pass{color:#8ce3bb}.fail{color:#ff8585}</style></head><body><header><h1>k6 metrics output · dMoney transaction workload</h1><p>Derived directly from reports/k6-summary.json. No values are fabricated.</p></header><pre>${escapeHtml(JSON.stringify(metricView, null, 2))}</pre></body></html>`;
 fs.writeFileSync(metricsOutput, metricsPage);
 console.log(`Wrote ${path.relative(root, metricsOutput)}`);
+
+
 

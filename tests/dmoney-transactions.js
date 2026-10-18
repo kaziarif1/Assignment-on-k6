@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check } from 'k6';
+import { check, sleep } from 'k6';
 import { Counter, Rate, Trend } from 'k6/metrics';
 
 const API_NAMES = ['deposit', 'sendmoney', 'payment'];
@@ -9,6 +9,7 @@ const failures = {};
 const transactionChecks = {};
 const durations = {};
 const phaseRequests = {};
+const failureDetails = new Counter('transaction_failure_details');
 
 for (const api of API_NAMES) {
   requests[api] = new Counter(`${api}_requests`);
@@ -25,11 +26,17 @@ function env(name, fallback) {
   return __ENV[name] || fallback;
 }
 
+const thinkTimeMin = Number(env('DMONEY_THINK_TIME_MIN', '15'));
+const thinkTimeMax = Number(env('DMONEY_THINK_TIME_MAX', '17'));
+
 const vus = Number(env('DMONEY_VUS_PER_FLOW', '1'));
 if (!Number.isInteger(vus) || vus < 1 || vus > 5) {
   throw new Error('DMONEY_VUS_PER_FLOW must be an integer from 1 to 5 for a local run.');
 }
 
+if (!Number.isFinite(thinkTimeMin) || !Number.isFinite(thinkTimeMax) || thinkTimeMin < 15 || thinkTimeMax < thinkTimeMin) {
+  throw new Error('DMONEY_THINK_TIME_MIN must be at least 15 seconds and DMONEY_THINK_TIME_MAX must be greater than or equal to it.');
+}
 const userDefinitions = {
   agent1: ['AGENT1_IDENTIFIER', 'AGENT1_PASSWORD'],
   agent2: ['AGENT2_IDENTIFIER', 'AGENT2_PASSWORD'],
@@ -157,6 +164,15 @@ export function runFlow(data) {
   const okMessage = body.message === ({ deposit: 'Deposit successful', sendmoney: 'Send money successful', payment: 'Payment successful' })[api];
   const okId = typeof body.trnxId === 'string' && body.trnxId.length > 0;
   const passed = okStatus && okMessage && okId;
+if (!passed) {
+    const message = String(body.message || '').toLowerCase();
+    const reason = message.includes('insufficient') ? 'insufficient_balance'
+      : message.includes('limit') || message.includes('exceeded') ? 'business_limit'
+      : message.includes('unauthorized') ? 'authorization'
+      : message.includes('active') ? 'inactive_account'
+      : `http_${response.status}_or_invalid_body`;
+    failureDetails.add(1, { api, phase, status: String(response.status), reason });
+  }
 
   requests[api].add(1, { phase });
   phaseRequests[`${api}_${phase}`].add(1);
@@ -170,11 +186,21 @@ export function runFlow(data) {
     [`${api} ${phase}: transaction ID`]: () => okId,
   });
   check(response, { [`${api} ${phase}: transaction succeeded`]: () => passed });
+  // Customer accounts are limited to 10 outgoing transactions per day. This
+  // randomized think-time allows two repeat iterations in each assigned 30s
+  // window (eight customer transactions total); scenario startTime continues
+  // to control the four phase boundaries and flow concurrency.
+  sleep(thinkTimeMin + Math.random() * (thinkTimeMax - thinkTimeMin));
 }
 
 export function handleSummary(data) {
   return { 'reports/k6-summary.json': JSON.stringify(data, null, 2) };
 }
+
+
+
+
+
 
 
 

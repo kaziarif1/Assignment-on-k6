@@ -1,709 +1,222 @@
 {
-  "metrics": {
-    "payment_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "med": 30.84035,
-        "max": 353.0626,
-        "p(90)": 87.37438000000002,
-        "p(95)": 98.366825,
-        "avg": 37.594955787721915,
-        "min": 6.1969
-      },
-      "thresholds": {
-        "p(95)<1000": {
-          "ok": true
-        }
-      }
-    },
-    "data_received": {
-      "type": "counter",
-      "contains": "data",
-      "values": {
-        "count": 4842167,
-        "rate": 40128.830517916576
-      }
-    },
-    "sendmoney_phase3_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "avg": 32.54654322508397,
-        "min": 10.1664,
-        "med": 31.3535,
-        "max": 357.0361,
-        "p(90)": 40.209179999999996,
-        "p(95)": 43.629799999999996
-      }
-    },
-    "iteration_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "avg": 39.5132409363258,
-        "min": 10.7164,
-        "med": 30.8349,
-        "max": 450.204,
-        "p(90)": 86.43527999999998,
-        "p(95)": 97.11212999999994
-      }
-    },
-    "vus_max": {
-      "type": "gauge",
-      "contains": "default",
-      "values": {
-        "value": 4,
-        "min": 4,
-        "max": 4
-      }
-    },
-    "payment_phase1_requests": {
-      "contains": "default",
-      "values": {
-        "count": 1260,
-        "rate": 10.442086456864226
-      },
-      "type": "counter"
-    },
-    "http_req_receiving": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "p(95)": 6.791630000000001,
-        "avg": 1.4273550562937407,
-        "min": 0,
-        "med": 0.6166,
-        "max": 142.135,
-        "p(90)": 4.378700000000003
-      }
-    },
-    "payment_phase2_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "avg": 27.321508538899447,
-        "min": 13.3408,
-        "med": 27.01435,
-        "max": 58.8917,
-        "p(90)": 32.25762,
-        "p(95)": 34.87325
-      }
-    },
-    "deposit_transaction_checks": {
-      "contains": "default",
-      "values": {
-        "rate": 0.25502815768302495,
-        "passes": 317,
-        "fails": 926
-      },
-      "thresholds": {
-        "rate>=0.99": {
-          "ok": false
-        }
-      },
-      "type": "rate"
-    },
-    "deposit_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 1243,
-        "rate": 10.301201163398598
-      }
-    },
-    "deposit_phase3_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 636,
-        "rate": 5.270767449655277
-      }
-    },
-    "vus": {
-      "type": "gauge",
-      "contains": "default",
-      "values": {
-        "max": 4,
-        "value": 4,
-        "min": 2
-      }
-    },
-    "checks": {
-      "thresholds": {
-        "rate>=0.99": {
-          "ok": false
-        }
-      },
-      "type": "rate",
-      "contains": "default",
-      "values": {
-        "rate": 0.09576520767746521,
-        "passes": 3772,
-        "fails": 35616
-      }
-    },
-    "sendmoney_phase1_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "med": 20.3409,
-        "max": 368.4191,
-        "p(90)": 28.391680000000004,
-        "p(95)": 30.12541,
-        "avg": 22.23703089753775,
-        "min": 3.8981
-      }
-    },
-    "payment_phase2_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 1054,
-        "rate": 8.734888194868965
-      }
-    },
-    "payment_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 5408,
-        "rate": 44.818098062477574
-      }
-    },
-    "http_req_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "avg": 38.34108816309987,
-        "min": 3.8981,
-        "med": 29.8365,
-        "max": 449.3746,
-        "p(90)": 85.25874,
-        "p(95)": 96.03229000000003
-      },
-      "thresholds": {
-        "p(95)<1000": {
-          "ok": true
-        }
-      }
-    },
-    "payment_phase4_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 2200,
-        "rate": 18.232214448493096
-      }
-    },
-    "http_req_failed": {
-      "type": "rate",
-      "contains": "default",
-      "values": {
-        "rate": 0.8097170098387261,
-        "passes": 7983,
-        "fails": 1876
-      },
-      "thresholds": {
-        "rate<0.01": {
-          "ok": false
-        }
-      }
-    },
-    "http_req_sending": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "p(90)": 0.6114200000000001,
-        "p(95)": 0.6442100000000001,
-        "avg": 0.09267025053250834,
-        "min": 0,
-        "med": 0,
-        "max": 80.0785
-      }
-    },
-    "data_sent": {
-      "type": "counter",
-      "contains": "data",
-      "values": {
-        "count": 4477798,
-        "rate": 37109.16972410613
-      }
-    },
-    "iterations": {
-      "contains": "default",
-      "values": {
-        "count": 9847,
-        "rate": 81.60573439741432
-      },
-      "type": "counter"
-    },
-    "sendmoney_transaction_checks": {
-      "contains": "default",
-      "values": {
-        "rate": 0.0031289111389236545,
-        "passes": 10,
-        "fails": 3186
-      },
-      "thresholds": {
-        "rate>=0.99": {
-          "ok": false
-        }
-      },
-      "type": "rate"
-    },
-    "payment_phase3_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "p(95)": 42.671575,
-        "avg": 32.4527,
-        "min": 11.3783,
-        "med": 31.157249999999998,
-        "max": 353.0626,
-        "p(90)": 39.3168
-      }
-    },
-    "http_req_blocked": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "p(90)": 0,
-        "p(95)": 0,
-        "avg": 0.018842519525306835,
-        "min": 0,
-        "med": 0,
-        "max": 24.2898
-      }
-    },
-    "deposit_duration": {
-      "values": {
-        "max": 449.3746,
-        "p(90)": 97.73379999999999,
-        "p(95)": 109.38819,
-        "avg": 71.17099541432015,
-        "min": 28.9839,
-        "med": 70.6149
-      },
-      "thresholds": {
-        "p(95)<1000": {
-          "ok": true
-        }
-      },
-      "type": "trend",
-      "contains": "time"
-    },
-    "payment_phase4_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "max": 167.6677,
-        "p(90)": 100.03685,
-        "p(95)": 105.04231499999999,
-        "avg": 53.43149577272732,
-        "min": 22.2091,
-        "med": 38.5551
-      }
-    },
-    "sendmoney_phase1_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 1259,
-        "rate": 10.433799086660366
-      }
-    },
-    "sendmoney_duration": {
-      "contains": "time",
-      "values": {
-        "max": 368.4191,
-        "p(90)": 35.22225,
-        "p(95)": 38.630225,
-        "avg": 26.810576220275347,
-        "min": 3.8981,
-        "med": 26.1022
-      },
-      "thresholds": {
-        "p(95)<1000": {
-          "ok": true
-        }
-      },
-      "type": "trend"
-    },
-    "sendmoney_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 3196,
-        "rate": 26.48643517153815
-      }
-    },
-    "deposit_failures": {
-      "type": "rate",
-      "contains": "default",
-      "values": {
-        "fails": 317,
-        "rate": 0.7449718423169751,
-        "passes": 926
-      },
-      "thresholds": {
-        "rate<0.01": {
-          "ok": false
-        }
-      }
-    },
-    "http_req_waiting": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "med": 28.4846,
-        "max": 449.3746,
-        "p(90)": 83.22868000000001,
-        "p(95)": 94.24622000000002,
-        "avg": 36.82106285627344,
-        "min": 3.8456
-      }
-    },
-    "sendmoney_phase3_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "rate": 7.4006215920474245,
-        "count": 893
-      }
-    },
-    "sendmoney_phase2_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "avg": 27.419651915708844,
-        "min": 14.1971,
-        "med": 27.030050000000003,
-        "max": 88.5985,
-        "p(90)": 32.07958,
-        "p(95)": 34.68524499999999
-      }
-    },
-    "http_req_duration{expected_response:true}": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "min": 28.9839,
-        "med": 86.17984999999999,
-        "max": 449.3746,
-        "p(90)": 104.8113,
-        "p(95)": 112.2366,
-        "avg": 80.02765538379533
-      }
-    },
-    "deposit_phase3_duration": {
-      "values": {
-        "p(90)": 108.3468,
-        "p(95)": 124.3627,
-        "avg": 93.1723773584906,
-        "min": 48.7208,
-        "med": 87.67835,
-        "max": 449.3746
-      },
-      "type": "trend",
-      "contains": "time"
-    },
-    "payment_transaction_checks": {
-      "type": "rate",
-      "contains": "default",
-      "values": {
-        "rate": 0.11390532544378698,
-        "passes": 616,
-        "fails": 4792
-      },
-      "thresholds": {
-        "rate>=0.99": {
-          "ok": false
-        }
-      }
-    },
-    "http_reqs": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 9859,
-        "rate": 81.70518283986064
-      }
-    },
-    "deposit_phase2_duration": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "min": 28.9839,
-        "med": 47.122,
-        "max": 135.8746,
-        "p(90)": 54.66948,
-        "p(95)": 61.71778999999993,
-        "avg": 48.118476606260295
-      }
-    },
-    "http_req_connecting": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "avg": 0.002380302261892687,
-        "min": 0,
-        "med": 0,
-        "max": 8.6448,
-        "p(90)": 0,
-        "p(95)": 0
-      }
-    },
-    "sendmoney_phase2_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 1044,
-        "rate": 8.652014492830359
-      }
-    },
-    "payment_phase3_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 894,
-        "rate": 7.408908962251285
-      }
-    },
-    "payment_failures": {
-      "values": {
-        "rate": 0.886094674556213,
-        "passes": 4792,
-        "fails": 616
-      },
-      "thresholds": {
-        "rate<0.01": {
-          "ok": false
-        }
-      },
-      "type": "rate",
-      "contains": "default"
-    },
-    "sendmoney_failures": {
-      "type": "rate",
-      "contains": "default",
-      "values": {
-        "passes": 3186,
-        "fails": 10,
-        "rate": 0.9968710888610763
-      },
-      "thresholds": {
-        "rate<0.01": {
-          "ok": false
-        }
-      }
-    },
-    "http_req_tls_handshaking": {
-      "type": "trend",
-      "contains": "time",
-      "values": {
-        "med": 0,
-        "max": 0,
-        "p(90)": 0,
-        "p(95)": 0,
-        "avg": 0,
-        "min": 0
-      }
-    },
-    "deposit_phase2_requests": {
-      "type": "counter",
-      "contains": "default",
-      "values": {
-        "count": 607,
-        "rate": 5.030433713743322
-      }
-    },
-    "payment_phase1_duration": {
-      "values": {
-        "med": 20.46065,
-        "max": 320.497,
-        "p(90)": 28.25569,
-        "p(95)": 30.584134999999993,
-        "avg": 22.18622730158731,
-        "min": 6.1969
-      },
-      "type": "trend",
-      "contains": "time"
-    }
-  },
-  "setup_data": {
-    "tokens": {
-      "agent2": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE2MTU5MzA5MzAiLCJyb2xlIjoiQWdlbnQiLCJpYXQiOjE3OTIzNTU3NTIsImV4cCI6MTc5MjM1OTM1Mn0.3GcTTHDjT7cndTKdMCtAk32LjGwG9WIl4cbJQQMDr5E",
-      "customer1": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE0OTY0NjQ1ODUiLCJyb2xlIjoiQ3VzdG9tZXIiLCJpYXQiOjE3OTIzNTU3NTIsImV4cCI6MTc5MjM1OTM1Mn0.4fUXWhC45x1rdomQlfd4CAUxbHmk4GcZojXb8SeAYy0",
-      "customer2": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE0MTY4MDQzNjMiLCJyb2xlIjoiQ3VzdG9tZXIiLCJpYXQiOjE3OTIzNTU3NTIsImV4cCI6MTc5MjM1OTM1Mn0.kw3LYFLntCnMRYPtXh9wb87qO5Lmb__nbA-2Yt6cEIw",
-      "merchant1": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE4NDY1NDg0OTgiLCJyb2xlIjoiTWVyY2hhbnQiLCJpYXQiOjE3OTIzNTU3NTIsImV4cCI6MTc5MjM1OTM1Mn0.qVjqJ7I65_FZac5kvs4uEsrvXAeAA329BVB5AMo2vTI",
-      "merchant2": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE5MzE2ODAzOTYiLCJyb2xlIjoiTWVyY2hhbnQiLCJpYXQiOjE3OTIzNTU3NTIsImV4cCI6MTc5MjM1OTM1Mn0.UFEUr-VuDlSXtZyigVDp0YxnKByOBIh7JjQfNUsqjNM",
-      "agent1": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE4MjMzMTkyODciLCJyb2xlIjoiQWdlbnQiLCJpYXQiOjE3OTIzNTU3NTIsImV4cCI6MTc5MjM1OTM1Mn0.c4x6_ErIG8ZDv0Nk7IDFpPnzjSa9Q_yTSCzjaNC_lYo"
-    }
-  },
   "root_group": {
-    "name": "",
     "path": "",
     "id": "d41d8cd98f00b204e9800998ecf8427e",
     "groups": [],
     "checks": [
         {
-          "id": "d654b95da0b21a08810ea2e888f27128",
-          "passes": 10,
-          "fails": 1250,
+          "passes": 2,
+          "fails": 0,
           "name": "payment phase1: HTTP 201",
-          "path": "::payment phase1: HTTP 201"
+          "path": "::payment phase1: HTTP 201",
+          "id": "d654b95da0b21a08810ea2e888f27128"
         },
         {
           "name": "payment phase1: successful message",
           "path": "::payment phase1: successful message",
           "id": "814e6bb3dd19edef025de27f9aed0f52",
-          "passes": 10,
-          "fails": 1250
+          "passes": 2,
+          "fails": 0
         },
         {
-          "fails": 1250,
+          "passes": 2,
+          "fails": 0,
           "name": "payment phase1: transaction ID",
           "path": "::payment phase1: transaction ID",
-          "id": "4c419c6df7a2e2643861aeb930c65b72",
-          "passes": 10
+          "id": "4c419c6df7a2e2643861aeb930c65b72"
         },
         {
+          "name": "payment phase1: transaction succeeded",
           "path": "::payment phase1: transaction succeeded",
           "id": "c4019c3a7a4e4dbecc84c0415a174c5b",
-          "passes": 10,
-          "fails": 1250,
-          "name": "payment phase1: transaction succeeded"
+          "passes": 2,
+          "fails": 0
         },
         {
-          "passes": 10,
-          "fails": 1249,
           "name": "sendmoney phase1: HTTP 201",
           "path": "::sendmoney phase1: HTTP 201",
-          "id": "2c4dc34dc74a45de65c06ce5607f8e2c"
+          "id": "2c4dc34dc74a45de65c06ce5607f8e2c",
+          "passes": 2,
+          "fails": 0
         },
         {
-          "fails": 1249,
           "name": "sendmoney phase1: successful message",
           "path": "::sendmoney phase1: successful message",
           "id": "6ce3f2e5c7166d5505631d0b4d6b781c",
-          "passes": 10
+          "passes": 2,
+          "fails": 0
         },
         {
+          "fails": 0,
           "name": "sendmoney phase1: transaction ID",
           "path": "::sendmoney phase1: transaction ID",
           "id": "b5f8484c42cd476cc237c65bcd54f0c8",
-          "passes": 10,
-          "fails": 1249
+          "passes": 2
         },
         {
+          "passes": 2,
+          "fails": 0,
           "name": "sendmoney phase1: transaction succeeded",
           "path": "::sendmoney phase1: transaction succeeded",
-          "id": "a8f1e421793ddc5a857fe7fceb81ae47",
-          "passes": 10,
-          "fails": 1249
-        },
-        {
-          "path": "::payment phase2: HTTP 201",
-          "id": "9eea4daf307e15d6269c8e70c5820cd5",
-          "passes": 0,
-          "fails": 1054,
-          "name": "payment phase2: HTTP 201"
-        },
-        {
-          "name": "payment phase2: successful message",
-          "path": "::payment phase2: successful message",
-          "id": "c557ccd289ef30cc948992e3d63f9411",
-          "passes": 0,
-          "fails": 1054
-        },
-        {
-          "fails": 1054,
-          "name": "payment phase2: transaction ID",
-          "path": "::payment phase2: transaction ID",
-          "id": "0cd47d586675a9c981bb2538fc15a0bf",
-          "passes": 0
-        },
-        {
-          "name": "payment phase2: transaction succeeded",
-          "path": "::payment phase2: transaction succeeded",
-          "id": "96e4cebd7e2a79dd1a7c09889386510e",
-          "passes": 0,
-          "fails": 1054
+          "id": "a8f1e421793ddc5a857fe7fceb81ae47"
         },
         {
           "name": "sendmoney phase2: HTTP 201",
           "path": "::sendmoney phase2: HTTP 201",
           "id": "e1de52bc0c3230c16a12b0db91a7be36",
-          "passes": 0,
-          "fails": 1044
+          "passes": 2,
+          "fails": 0
         },
         {
-          "name": "sendmoney phase2: successful message",
           "path": "::sendmoney phase2: successful message",
           "id": "de6e1bc5db9c1c5750d991baa0d5dc7e",
-          "passes": 0,
-          "fails": 1044
+          "passes": 2,
+          "fails": 0,
+          "name": "sendmoney phase2: successful message"
         },
         {
-          "id": "6fdae6f17e1d47ef799c931af5b4f379",
-          "passes": 0,
-          "fails": 1044,
+          "passes": 2,
+          "fails": 0,
           "name": "sendmoney phase2: transaction ID",
-          "path": "::sendmoney phase2: transaction ID"
+          "path": "::sendmoney phase2: transaction ID",
+          "id": "6fdae6f17e1d47ef799c931af5b4f379"
         },
         {
-          "name": "sendmoney phase2: transaction succeeded",
-          "path": "::sendmoney phase2: transaction succeeded",
           "id": "3e69bff2b09d9ebc48f90743a0d854e4",
-          "passes": 0,
-          "fails": 1044
+          "passes": 2,
+          "fails": 0,
+          "name": "sendmoney phase2: transaction succeeded",
+          "path": "::sendmoney phase2: transaction succeeded"
         },
         {
+          "name": "payment phase2: HTTP 201",
+          "path": "::payment phase2: HTTP 201",
+          "id": "9eea4daf307e15d6269c8e70c5820cd5",
+          "passes": 2,
+          "fails": 0
+        },
+        {
+          "fails": 0,
+          "name": "payment phase2: successful message",
+          "path": "::payment phase2: successful message",
+          "id": "c557ccd289ef30cc948992e3d63f9411",
+          "passes": 2
+        },
+        {
+          "name": "payment phase2: transaction ID",
+          "path": "::payment phase2: transaction ID",
+          "id": "0cd47d586675a9c981bb2538fc15a0bf",
+          "passes": 2,
+          "fails": 0
+        },
+        {
+          "id": "96e4cebd7e2a79dd1a7c09889386510e",
+          "passes": 2,
+          "fails": 0,
+          "name": "payment phase2: transaction succeeded",
+          "path": "::payment phase2: transaction succeeded"
+        },
+        {
+          "passes": 2,
+          "fails": 0,
+          "name": "deposit phase2: HTTP 201",
           "path": "::deposit phase2: HTTP 201",
-          "id": "7710d1ee6cd8de5922a1b323808fd690",
-          "passes": 5,
-          "fails": 602,
-          "name": "deposit phase2: HTTP 201"
+          "id": "7710d1ee6cd8de5922a1b323808fd690"
         },
         {
           "name": "deposit phase2: successful message",
           "path": "::deposit phase2: successful message",
           "id": "75f021b07b1e0edd46f1985b4f2077ba",
-          "passes": 5,
-          "fails": 602
+          "passes": 2,
+          "fails": 0
         },
         {
+          "passes": 2,
+          "fails": 0,
           "name": "deposit phase2: transaction ID",
           "path": "::deposit phase2: transaction ID",
-          "id": "a060c8a7c2f8e8a9c0770f0214970d2c",
-          "passes": 5,
-          "fails": 602
+          "id": "a060c8a7c2f8e8a9c0770f0214970d2c"
         },
         {
           "name": "deposit phase2: transaction succeeded",
           "path": "::deposit phase2: transaction succeeded",
           "id": "205a3872768f5a96cd10ab7511b06d88",
-          "passes": 5,
-          "fails": 602
+          "passes": 2,
+          "fails": 0
         },
         {
+          "name": "deposit phase3: HTTP 201",
+          "path": "::deposit phase3: HTTP 201",
+          "id": "1bfa557664f72904c12207d3af29d081",
+          "passes": 4,
+          "fails": 0
+        },
+        {
+          "path": "::deposit phase3: successful message",
+          "id": "450ed477043eb50843fd2efd5ec807e0",
+          "passes": 4,
+          "fails": 0,
+          "name": "deposit phase3: successful message"
+        },
+        {
+          "fails": 0,
+          "name": "deposit phase3: transaction ID",
+          "path": "::deposit phase3: transaction ID",
+          "id": "0c4dd938e0f9c3767125d80ac16bd305",
+          "passes": 4
+        },
+        {
+          "name": "deposit phase3: transaction succeeded",
+          "path": "::deposit phase3: transaction succeeded",
+          "id": "1f9cf64afb7c2b7b453f8a57e19e9b02",
+          "passes": 4,
+          "fails": 0
+        },
+        {
+          "id": "7c1ccb6cbd02e19778b31c97e6f46dcd",
+          "passes": 2,
+          "fails": 0,
+          "name": "sendmoney phase3: HTTP 201",
+          "path": "::sendmoney phase3: HTTP 201"
+        },
+        {
+          "name": "sendmoney phase3: successful message",
+          "path": "::sendmoney phase3: successful message",
+          "id": "64afbc65352506d188c65374634902f5",
+          "passes": 2,
+          "fails": 0
+        },
+        {
+          "passes": 2,
+          "fails": 0,
+          "name": "sendmoney phase3: transaction ID",
+          "path": "::sendmoney phase3: transaction ID",
+          "id": "d983835d5f0dbca06fbc1d6bc6cf68f8"
+        },
+        {
+          "path": "::sendmoney phase3: transaction succeeded",
+          "id": "aa84d9405f948f7167af129f0e90469b",
+          "passes": 2,
+          "fails": 0,
+          "name": "sendmoney phase3: transaction succeeded"
+        },
+        {
+          "fails": 0,
+          "name": "payment phase3: HTTP 201",
           "path": "::payment phase3: HTTP 201",
           "id": "2f78089dd08409d0d76cc58ada3187d3",
-          "passes": 0,
-          "fails": 894,
-          "name": "payment phase3: HTTP 201"
+          "passes": 2
         },
         {
-          "id": "b785bf9db086d531f84a1a56068b64d4",
-          "passes": 0,
-          "fails": 894,
+          "fails": 0,
           "name": "payment phase3: successful message",
-          "path": "::payment phase3: successful message"
+          "path": "::payment phase3: successful message",
+          "id": "b785bf9db086d531f84a1a56068b64d4",
+          "passes": 2
         },
         {
-          "passes": 0,
-          "fails": 894,
+          "passes": 2,
+          "fails": 0,
           "name": "payment phase3: transaction ID",
           "path": "::payment phase3: transaction ID",
           "id": "c2ef20024cde119d8c5b62bee53fe968"
@@ -712,97 +225,41 @@
           "name": "payment phase3: transaction succeeded",
           "path": "::payment phase3: transaction succeeded",
           "id": "ba0078055ef0ccf4e7f526313b5d68c2",
-          "passes": 0,
-          "fails": 894
+          "passes": 2,
+          "fails": 0
         },
         {
-          "id": "7c1ccb6cbd02e19778b31c97e6f46dcd",
-          "passes": 0,
-          "fails": 893,
-          "name": "sendmoney phase3: HTTP 201",
-          "path": "::sendmoney phase3: HTTP 201"
-        },
-        {
-          "fails": 893,
-          "name": "sendmoney phase3: successful message",
-          "path": "::sendmoney phase3: successful message",
-          "id": "64afbc65352506d188c65374634902f5",
-          "passes": 0
-        },
-        {
-          "fails": 893,
-          "name": "sendmoney phase3: transaction ID",
-          "path": "::sendmoney phase3: transaction ID",
-          "id": "d983835d5f0dbca06fbc1d6bc6cf68f8",
-          "passes": 0
-        },
-        {
-          "fails": 893,
-          "name": "sendmoney phase3: transaction succeeded",
-          "path": "::sendmoney phase3: transaction succeeded",
-          "id": "aa84d9405f948f7167af129f0e90469b",
-          "passes": 0
-        },
-        {
-          "name": "deposit phase3: HTTP 201",
-          "path": "::deposit phase3: HTTP 201",
-          "id": "1bfa557664f72904c12207d3af29d081",
-          "passes": 312,
-          "fails": 324
-        },
-        {
-          "name": "deposit phase3: successful message",
-          "path": "::deposit phase3: successful message",
-          "id": "450ed477043eb50843fd2efd5ec807e0",
-          "passes": 312,
-          "fails": 324
-        },
-        {
-          "path": "::deposit phase3: transaction ID",
-          "id": "0c4dd938e0f9c3767125d80ac16bd305",
-          "passes": 312,
-          "fails": 324,
-          "name": "deposit phase3: transaction ID"
-        },
-        {
-          "path": "::deposit phase3: transaction succeeded",
-          "id": "1f9cf64afb7c2b7b453f8a57e19e9b02",
-          "passes": 312,
-          "fails": 324,
-          "name": "deposit phase3: transaction succeeded"
-        },
-        {
+          "passes": 8,
+          "fails": 0,
           "name": "payment phase4: HTTP 201",
           "path": "::payment phase4: HTTP 201",
-          "id": "bd45e6eaa0682b8aaa8ecc7cc7910a88",
-          "passes": 606,
-          "fails": 1594
+          "id": "bd45e6eaa0682b8aaa8ecc7cc7910a88"
         },
         {
+          "name": "payment phase4: successful message",
           "path": "::payment phase4: successful message",
           "id": "883a1ab110d2faeb6913dde2c8b4e256",
-          "passes": 606,
-          "fails": 1594,
-          "name": "payment phase4: successful message"
+          "passes": 8,
+          "fails": 0
         },
         {
-          "fails": 1594,
+          "fails": 0,
           "name": "payment phase4: transaction ID",
           "path": "::payment phase4: transaction ID",
           "id": "46583adbdbf8274919f40ba215b9baf2",
-          "passes": 606
+          "passes": 8
         },
         {
+          "passes": 8,
+          "fails": 0,
           "name": "payment phase4: transaction succeeded",
           "path": "::payment phase4: transaction succeeded",
-          "id": "0bd4184a4b629f914a573e7178d7b318",
-          "passes": 606,
-          "fails": 1594
+          "id": "0bd4184a4b629f914a573e7178d7b318"
         }
-      ]
+      ],
+    "name": ""
   },
   "options": {
-    "noColor": true,
     "summaryTrendStats": [
       "avg",
       "min",
@@ -811,11 +268,554 @@
       "p(90)",
       "p(95)"
     ],
-    "summaryTimeUnit": ""
+    "summaryTimeUnit": "",
+    "noColor": true
   },
   "state": {
-    "testRunDurationMs": 120665.5399,
     "isStdOutTTY": false,
-    "isStdErrTTY": false
+    "isStdErrTTY": false,
+    "testRunDurationMs": 120372.1944
+  },
+  "metrics": {
+    "sendmoney_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 6,
+        "rate": 0.049845398515057725
+      }
+    },
+    "sendmoney_transaction_checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 1,
+        "passes": 6,
+        "fails": 0
+      },
+      "thresholds": {
+        "rate>=0.99": {
+          "ok": true
+        }
+      }
+    },
+    "payment_phase1_duration": {
+      "values": {
+        "p(95)": 129.90103,
+        "avg": 91.9303,
+        "min": 49.7406,
+        "med": 91.9303,
+        "max": 134.12,
+        "p(90)": 125.68206
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "deposit_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 6,
+        "rate": 0.049845398515057725
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 231.99286,
+        "avg": 89.33936315789471,
+        "min": 21.2118,
+        "med": 65.6303,
+        "max": 235.3423,
+        "p(90)": 207.7450200000001
+      }
+    },
+    "sendmoney_phase3_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 0.016615132838352576
+      }
+    },
+    "payment_phase3_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 0.016615132838352576
+      }
+    },
+    "deposit_phase2_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 49.2774,
+        "med": 88.70795,
+        "max": 128.1385,
+        "p(90)": 120.25238999999999,
+        "p(95)": 124.19544499999999,
+        "avg": 88.70795
+      }
+    },
+    "payment_phase3_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 130.69150000000002,
+        "max": 201.6916,
+        "p(90)": 187.49158,
+        "p(95)": 194.59159,
+        "avg": 130.6915,
+        "min": 59.6914
+      }
+    },
+    "payment_phase4_requests": {
+      "contains": "default",
+      "values": {
+        "count": 8,
+        "rate": 0.0664605313534103
+      },
+      "type": "counter"
+    },
+    "checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 1,
+        "passes": 104,
+        "fails": 0
+      },
+      "thresholds": {
+        "rate>=0.99": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_failed": {
+      "thresholds": {
+        "rate<0.01": {
+          "ok": true
+        }
+      },
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 38
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 1.6315789473684206,
+        "min": 0,
+        "med": 1.5924,
+        "max": 7.7092,
+        "p(90)": 2.3257000000000008,
+        "p(95)": 5.381284999999998
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 14160,
+        "rate": 117.63514049553623
+      }
+    },
+    "sendmoney_phase1_requests": {
+      "contains": "default",
+      "values": {
+        "rate": 0.016615132838352576,
+        "count": 2
+      },
+      "type": "counter"
+    },
+    "http_req_tls_handshaking": {
+      "contains": "time",
+      "values": {
+        "p(95)": 0,
+        "avg": 0,
+        "min": 0,
+        "med": 0,
+        "max": 0,
+        "p(90)": 0
+      },
+      "type": "trend"
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 38,
+        "rate": 0.3156875239286989
+      }
+    },
+    "deposit_duration": {
+      "contains": "time",
+      "values": {
+        "p(90)": 181.49894999999998,
+        "p(95)": 192.923675,
+        "avg": 109.59473333333334,
+        "min": 48.8726,
+        "med": 98.21025,
+        "max": 204.3484
+      },
+      "thresholds": {
+        "p(95)<1000": {
+          "ok": true
+        }
+      },
+      "type": "trend"
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 4,
+        "min": 2,
+        "max": 4
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 235.6609,
+        "p(90)": 210.8615800000001,
+        "p(95)": 232.687975,
+        "avg": 90.45779736842105,
+        "min": 22.1735,
+        "med": 67.3003
+      }
+    },
+    "deposit_failures": {
+      "thresholds": {
+        "rate<0.01": {
+          "ok": true
+        }
+      },
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 6
+      }
+    },
+    "sendmoney_phase3_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 115.04034999999999,
+        "min": 69.8968,
+        "med": 115.04034999999999,
+        "max": 160.1839,
+        "p(90)": 151.15519,
+        "p(95)": 155.66954499999997
+      }
+    },
+    "deposit_transaction_checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "passes": 6,
+        "fails": 0,
+        "rate": 1
+      },
+      "thresholds": {
+        "rate>=0.99": {
+          "ok": true
+        }
+      }
+    },
+    "sendmoney_phase2_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 74.12245,
+        "min": 48.0101,
+        "med": 74.12245,
+        "max": 100.2348,
+        "p(90)": 95.01233,
+        "p(95)": 97.62356500000001
+      }
+    },
+    "deposit_phase2_requests": {
+      "values": {
+        "count": 2,
+        "rate": 0.016615132838352576
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "sendmoney_phase1_duration": {
+      "contains": "time",
+      "values": {
+        "max": 139.857,
+        "p(90)": 135.37608,
+        "p(95)": 137.61654,
+        "avg": 117.4524,
+        "min": 95.0478,
+        "med": 117.4524
+      },
+      "type": "trend"
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 14636,
+        "rate": 121.58954211106415
+      }
+    },
+    "deposit_phase3_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 197.493565,
+        "avg": 120.03812499999998,
+        "min": 48.8726,
+        "med": 113.46574999999999,
+        "max": 204.3484,
+        "p(90)": 190.63873
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.5844,
+        "max": 2.1677,
+        "p(90)": 1.0293,
+        "p(95)": 1.1221749999999993,
+        "avg": 0.5896657894736842,
+        "min": 0
+      }
+    },
+    "payment_failures": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "passes": 0,
+        "fails": 14,
+        "rate": 0
+      },
+      "thresholds": {
+        "rate<0.01": {
+          "ok": true
+        }
+      }
+    },
+    "payment_phase4_duration": {
+      "contains": "time",
+      "values": {
+        "med": 152.75945000000002,
+        "max": 235.6609,
+        "p(90)": 234.98911,
+        "p(95)": 235.325005,
+        "avg": 147.912375,
+        "min": 49.5563
+      },
+      "type": "trend"
+    },
+    "http_req_sending": {
+      "contains": "time",
+      "values": {
+        "avg": 0.5287684210526316,
+        "min": 0,
+        "med": 0,
+        "max": 5.6184,
+        "p(90)": 1.4240100000000098,
+        "p(95)": 3.6727
+      },
+      "type": "trend"
+    },
+    "sendmoney_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 97.6413,
+        "max": 160.1839,
+        "p(90)": 150.02044999999998,
+        "p(95)": 155.102175,
+        "avg": 102.20506666666665,
+        "min": 48.0101
+      },
+      "thresholds": {
+        "p(95)<1000": {
+          "ok": true
+        }
+      }
+    },
+    "sendmoney_failures": {
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 6
+      },
+      "thresholds": {
+        "rate<0.01": {
+          "ok": true
+        }
+      },
+      "type": "rate"
+    },
+    "payment_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 14,
+        "rate": 0.11630592986846804
+      }
+    },
+    "payment_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 235.037095,
+        "avg": 129.53353571428573,
+        "min": 49.5563,
+        "med": 94.06545,
+        "max": 235.6609,
+        "p(90)": 233.99065
+      },
+      "thresholds": {
+        "p(95)<1000": {
+          "ok": true
+        }
+      }
+    },
+    "payment_transaction_checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 1,
+        "passes": 14,
+        "fails": 0
+      },
+      "thresholds": {
+        "rate>=0.99": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_connecting": {
+      "contains": "time",
+      "values": {
+        "avg": 1.2652342105263155,
+        "min": 0,
+        "med": 1.39795,
+        "max": 6.229,
+        "p(90)": 2.03424,
+        "p(95)": 2.1461949999999996
+      },
+      "type": "trend"
+    },
+    "deposit_phase3_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 4,
+        "rate": 0.03323026567670515
+      }
+    },
+    "payment_phase1_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 0.016615132838352576
+      }
+    },
+    "iteration_duration": {
+      "contains": "time",
+      "values": {
+        "avg": 16361.652730769232,
+        "min": 15124.4506,
+        "med": 16427.8319,
+        "max": 17085.6563,
+        "p(90)": 16895.042879999997,
+        "p(95)": 16996.436899999997
+      },
+      "type": "trend"
+    },
+    "payment_phase2_requests": {
+      "values": {
+        "count": 2,
+        "rate": 0.016615132838352576
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "http_req_duration": {
+      "contains": "time",
+      "values": {
+        "p(95)": 232.687975,
+        "avg": 90.45779736842105,
+        "min": 22.1735,
+        "med": 67.3003,
+        "max": 235.6609,
+        "p(90)": 210.8615800000001
+      },
+      "thresholds": {
+        "p(95)<1000": {
+          "ok": true
+        }
+      },
+      "type": "trend"
+    },
+    "iterations": {
+      "values": {
+        "rate": 0.10799836344929174,
+        "count": 13
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "sendmoney_phase2_requests": {
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 0.016615132838352576
+      },
+      "type": "counter"
+    },
+    "payment_phase2_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 92.46345,
+        "min": 76.2559,
+        "med": 92.46345,
+        "max": 108.671,
+        "p(90)": 105.42949,
+        "p(95)": 107.050245
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 4,
+        "max": 4,
+        "value": 4
+      }
+    }
+  },
+  "setup_data": {
+    "tokens": {
+      "customer1": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE3OTE2ODMwMTMiLCJyb2xlIjoiQ3VzdG9tZXIiLCJpYXQiOjE3OTIzNTg4MjAsImV4cCI6MTc5MjM2MjQyMH0.25TMNKN6IDVcF1tkufqyf3iG6zqQsJYQ0J3yo_r_Sns",
+      "customer2": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE3OTMwMTY1MTIiLCJyb2xlIjoiQ3VzdG9tZXIiLCJpYXQiOjE3OTIzNTg4MjEsImV4cCI6MTc5MjM2MjQyMX0.4MvcPbxdnpPSAIFtdJWKBxDCrM6fEsEwpCcdp72Mpss",
+      "merchant1": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE4NDY1NDg0OTgiLCJyb2xlIjoiTWVyY2hhbnQiLCJpYXQiOjE3OTIzNTg4MjEsImV4cCI6MTc5MjM2MjQyMX0._T5rRzMUBqkPn6w79c-loF9p5-1NJD6PCqYp4M6L64U",
+      "merchant2": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE5MzE2ODAzOTYiLCJyb2xlIjoiTWVyY2hhbnQiLCJpYXQiOjE3OTIzNTg4MjEsImV4cCI6MTc5MjM2MjQyMX0.Zug9eYvFrvaPDrJp_S_6DRBY-Pj7GBYfvudu-WZg9rE",
+      "agent1": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE4MjMzMTkyODciLCJyb2xlIjoiQWdlbnQiLCJpYXQiOjE3OTIzNTg4MjAsImV4cCI6MTc5MjM2MjQyMH0.Qq1KjLi7b3xOR5BUmJXd9NueSH2EF5_ICnbqWxB-K0Q",
+      "agent2": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiMDE2MTU5MzA5MzAiLCJyb2xlIjoiQWdlbnQiLCJpYXQiOjE3OTIzNTg4MjAsImV4cCI6MTc5MjM2MjQyMH0.gAEENbTci79shHV5YMIJeNT8u5iCFbtlBaX_i72W60w"
+    }
   }
 }

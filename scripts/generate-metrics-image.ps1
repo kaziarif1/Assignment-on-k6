@@ -50,13 +50,13 @@ $failedHttp = [int]$httpFailed.passes
 $checkPct = [math]::Round(([double]$checks.rate * 100), 2)
 $failPct = [math]::Round(([double]$httpFailed.rate * 100), 2)
 Draw-Text 'k6 metrics output | dMoney transaction workload' 48 34 $titleFont $text
-Draw-Text ("Actual run summary · {0:N2} seconds · generated from k6-summary.json" -f $durationSeconds) 52 86 $bodyFont $muted
+Draw-Text ("Actual run summary - {0:N2} seconds - generated from k6-summary.json" -f $durationSeconds) 52 86 $bodyFont $muted
 $cards = @(
   @('Transaction API requests', $transactionRequests.ToString('N0'), $green),
   @('All HTTP requests (incl. setup)', $allHttp.ToString('N0'), $text),
   @('Transaction throughput', ("{0:N2} req/s" -f ($transactionRequests / $durationSeconds)), $green),
-  @('HTTP request failure rate', ("{0:N2}% ({1:N0} failed)" -f $failPct, $failedHttp), $red),
-  @('Checks passed', ("{0:N2}%" -f $checkPct), $red),
+  @('HTTP request failure rate', ("{0:N2}% ({1:N0} failed)" -f $failPct, $failedHttp), $(if ($httpFailed.rate -lt 0.01) { $green } else { $red })),
+  @('Checks passed', ("{0:N2}%" -f $checkPct), $(if ($checks.rate -ge 0.99) { $green } else { $red })),
   @('HTTP duration avg / p95', ("{0:N2} / {1:N2} ms" -f $http.avg, $http.'p(95)'), $green)
 )
 for ($i=0; $i -lt $cards.Count; $i++) {
@@ -98,7 +98,7 @@ for ($i=0; $i -lt $thresholds.Count; $i++) {
   Draw-Text $thresholds[$i][0] 155 $y $bodyFont $text
   Draw-Text $thresholds[$i][2] 950 $y $bodyFont $muted
 }
-Draw-Text 'Source: reports/k6-summary.json · This image contains observed run metrics; no values are simulated.' 48 1058 $smallFont $muted
+Draw-Text 'Source: reports/k6-summary.json - observed run metrics; no values are simulated.' 48 1058 $smallFont $muted
 $dir = Split-Path -Parent $OutputPath
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
 $canvas.Save((Resolve-Path $dir).Path + '\' + (Split-Path -Leaf $OutputPath), [Drawing.Imaging.ImageFormat]::Png)
